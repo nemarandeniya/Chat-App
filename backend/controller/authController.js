@@ -58,6 +58,7 @@ export const login = async (req, res) => {
         generateTokenAndSetCookie(user._id, res)
 
         return res.status(200).json({
+            success: true,
             _id: user._id,
             fullname: user.fullname,
             username: user.username,
@@ -65,7 +66,7 @@ export const login = async (req, res) => {
         })
     } catch (error) {
         console.error(error)
-        return res.status(500).json({ error: "Internal server error!" })
+        return res.status(500).json({ success: false, error: "Internal server error!" })
     }
 }
 export const logout = (req, res) => {
