@@ -25,7 +25,7 @@ const Signup = () => {
         if (!success) return
         setLoading(true)
         try {
-            const response = await axios.post('http://localhost:5000/api/auth/signup', inputs)
+            const response = await axios.post('http://localhost:5000/api/auth/signup', inputs, { withCredentials: true })
             console.log(response.data);
             toast.success("Successfully registered")
             localStorage.setItem("chat-user", JSON.stringify(response.data))

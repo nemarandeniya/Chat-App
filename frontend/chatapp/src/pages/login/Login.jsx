@@ -17,7 +17,7 @@ const Login = () => {
         e.preventDefault()
         try {
             setLoading(true)
-            const response = await axios.post('http://localhost:5000/api/auth/login', { username, password })
+            const response = await axios.post('http://localhost:5000/api/auth/login', { username, password }, { withCredentials: true })
 
             if (response.data.error) {
                 throw new Error(response.data.error)

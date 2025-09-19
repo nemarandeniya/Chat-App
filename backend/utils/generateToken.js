@@ -10,9 +10,11 @@ const generateTokenAndSetCookie = (userId, res) => {
     res.cookie("jwt", token, {
         maxAge: 15 * 24 * 60 * 60 * 1000,//expires after 15days
         httpOnly: true,//JavaScript in the browser cannot read the cookie, only the server can.
-        sameSite: "strict",//Browser won’t send this cookie when the request comes from another site (CSRF protection).
-        secure: process.env.NODE_ENV !== "development"
+        sameSite: "lax",//"strict" ->Browser won’t send this cookie when the request comes from another site (CSRF protection).
+        secure: false// process.env.NODE_ENV !== "development"
     })
+    console.log("Token :", token);
+    return token
 }
 
 export default generateTokenAndSetCookie
